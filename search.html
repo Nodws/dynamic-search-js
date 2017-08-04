@@ -47,7 +47,7 @@ apex_search.init = function (){
 apex_search.lsearch = function(){
 	this.term = document.getElementById('S').value.toUpperCase();
 	for(var i=0,row;row = this.rows[i],row_text = this.rows_text[i];i++){
-		row.style.display = ((row_text.indexOf(this.term) != -1) || this.term  === '')?'':'none';
+		row.style.display = (~row_text.indexOf(this.term) || this.term  === '')?'':'none';
 	}
 	this.time = false;
 }
@@ -58,7 +58,7 @@ apex_search.search = function(e){
     else if (e){keycode = e.which;}
     else {return false;}
 
-    if(keycode == 13) { apex_search.lsearch(); } else { return false; }
+    if(document.getElementById('S').value.length > 2 || keycode == 13) { apex_search.lsearch(); } else { return false; }
 }
 </script>
 
